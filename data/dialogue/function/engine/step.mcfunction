@@ -5,8 +5,9 @@ $data modify storage dialogue:active current_text set string storage dialogue:ac
 execute if data storage dialogue:active {speaker:""} run function dialogue:engine/display_plain with storage dialogue:active
 execute unless data storage dialogue:active {speaker:""} run function dialogue:engine/display_speaker with storage dialogue:active
 
-# Воспроизводим звук пишущей машинки (если звук включен)
-execute if score #sound dialogue_engine matches 1 as @a at @s run playsound minecraft:block.note_block.hat ambient @s ~ ~ ~ 0.25 1.9
+# Воспроизводим звук пишущей машинки с учётом пола (если звук включен)
+execute if data storage dialogue:active {gender:"female"} run function dialogue:engine/sound/female
+execute unless data storage dialogue:active {gender:"female"} run function dialogue:engine/sound/male
 
 # Если ещё не дошли до конца строки, планируем следующий символ
 execute if score #idx dialogue_engine < #len dialogue_engine run function dialogue:engine/schedule_next with storage dialogue:settings

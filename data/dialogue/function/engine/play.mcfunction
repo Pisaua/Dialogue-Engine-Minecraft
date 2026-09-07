@@ -11,6 +11,7 @@ execute unless data storage dialogue:settings italic run data modify storage dia
 execute unless data storage dialogue:settings underlined run data modify storage dialogue:settings underlined set value false
 execute unless data storage dialogue:settings font run data modify storage dialogue:settings font set value "minecraft:default"
 execute unless data storage dialogue:settings speaker_color run data modify storage dialogue:settings speaker_color set value "gold"
+execute unless data storage dialogue:settings gender run data modify storage dialogue:settings gender set value "male"
 execute store result score #sound dialogue_engine run data get storage dialogue:settings sound
 
 # Копируем текст в активный буфер
@@ -44,6 +45,9 @@ execute unless data storage dialogue:engine speaker run data modify storage dial
 execute if data storage dialogue:engine speaker_color run data modify storage dialogue:active speaker_color set from storage dialogue:engine speaker_color
 execute unless data storage dialogue:engine speaker_color run data modify storage dialogue:active speaker_color set from storage dialogue:settings speaker_color
 
+execute if data storage dialogue:engine gender run data modify storage dialogue:active gender set from storage dialogue:engine gender
+execute unless data storage dialogue:engine gender run data modify storage dialogue:active gender set from storage dialogue:settings gender
+
 # Очищаем входные параметры в dialogue:engine
 data remove storage dialogue:engine text
 data remove storage dialogue:engine color
@@ -53,6 +57,7 @@ data remove storage dialogue:engine underlined
 data remove storage dialogue:engine font
 data remove storage dialogue:engine speaker
 data remove storage dialogue:engine speaker_color
+data remove storage dialogue:engine gender
 
 # Сбрасываем счетчик символов
 scoreboard players set #idx dialogue_engine 0

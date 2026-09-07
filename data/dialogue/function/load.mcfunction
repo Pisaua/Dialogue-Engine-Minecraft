@@ -10,6 +10,7 @@ execute unless data storage dialogue:settings italic run data modify storage dia
 execute unless data storage dialogue:settings underlined run data modify storage dialogue:settings underlined set value false
 execute unless data storage dialogue:settings font run data modify storage dialogue:settings font set value "minecraft:default"
 execute unless data storage dialogue:settings speaker_color run data modify storage dialogue:settings speaker_color set value "gold"
+execute unless data storage dialogue:settings gender run data modify storage dialogue:settings gender set value "male"
 
 # Синхронизация значений
 execute store result score #sound dialogue_engine run data get storage dialogue:settings sound
