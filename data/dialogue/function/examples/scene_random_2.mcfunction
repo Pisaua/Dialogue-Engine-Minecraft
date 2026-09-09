@@ -1,0 +1,1 @@
+function dialogue:characters/scout {text:"Да обязательно! Я же сказала, что это срочно!"}
